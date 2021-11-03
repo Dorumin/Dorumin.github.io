@@ -1,4 +1,6 @@
 import { render } from 'react-dom';
-import Root from './components/Root';
+import Main from './components/Main';
 
-render(<Root />, document.getElementById('root'));
+import './index.css';
+
+render(<Main />, document.getElementById('root'));
