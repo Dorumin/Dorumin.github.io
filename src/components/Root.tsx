@@ -1,7 +1,8 @@
 export default function Root() {
     return (
         <div>
-            One day, this page will be interesting.
+            <p>One day, this page will be interesting.</p>
+            <p>But today is not that day</p>
         </div>
     );
 }
