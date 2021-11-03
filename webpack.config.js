@@ -25,6 +25,14 @@ module.exports = {
                 {
                     from: 'public',
                     to: '../public'
+                },
+                {
+                    from: 'CNAME',
+                    to: '..'
+                },
+                {
+                    from: '.nojekyll',
+                    to: '..'
                 }
             ]
         }),
