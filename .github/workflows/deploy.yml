@@ -1,4 +1,4 @@
-name: Build the page and push to the gh-pages branch
+name: Build the site and push to the gh-pages branch
 
 on:
   push:
@@ -24,6 +24,6 @@ jobs:
         env:
           REPO: self
           BRANCH: gh-pages
-          FOLDER: output
+          FOLDER: out
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           MESSAGE: "Build: ({sha}) {msg}"
