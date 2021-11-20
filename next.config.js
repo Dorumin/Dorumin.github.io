@@ -16,7 +16,7 @@ module.exports = {
                 return rule.test.toString() === '/\\.module\\.css$/';
             });
         const cssLoader = moduleLoader.use.find(loader => {
-            return loader.loader.includes('\\css-loader\\');
+            return /\bcss-loader\b/.test(loader.loader);
         });
 
         cssLoader.options.modules.getLocalIdent = getCssModuleLocalIdent;
