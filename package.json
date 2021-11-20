@@ -24,6 +24,7 @@
         "babel-plugin-wildcard": "^7.0.0",
         "eslint": "7",
         "eslint-config-next": "12.0.4",
+        "sass": "^1.43.4",
         "typescript": "4.5.2"
     }
 }

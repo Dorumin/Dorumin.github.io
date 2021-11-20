@@ -1,0 +1,28 @@
+@mixin flex($props...) {
+    display: flex;
+
+    @each $prop in $props {
+        @if $prop == center {
+            justify-content: center;
+            align-items: center;
+        } @else if $prop == column {
+            flex-direction: column;
+        } @else if $prop == 1 or $prop == one {
+            flex: 1 1 0%;
+        } @else if $prop == auto {
+            flex: 1 1 auto;
+        } @else if $prop == initial {
+            flex: 0 1 auto;
+        } @else if $prop == none {
+            flex: none;
+        }
+    }
+}
+
+@mixin absolute-cover {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}

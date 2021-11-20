@@ -15,11 +15,25 @@ module.exports = {
             .find(rule => {
                 return rule.test.toString() === '/\\.module\\.css$/';
             });
+
+        const sassModuleLoader = config.module.rules
+            .filter(rule => {
+                return rule.oneOf && rule.oneOf.find(rule => rule.test.toString() === '/\\.module\\.(scss|sass)$/');
+            })[0].oneOf
+            .find(rule => {
+                return rule.test.toString() === '/\\.module\\.(scss|sass)$/';
+            });
+
         const cssLoader = moduleLoader.use.find(loader => {
             return /\bcss-loader\b/.test(loader.loader);
         });
 
+        const sassCssLoader = sassModuleLoader.use.find(loader => {
+            return /\bcss-loader\b/.test(loader.loader);
+        });
+
         cssLoader.options.modules.getLocalIdent = getCssModuleLocalIdent;
+        sassCssLoader.options.modules.getLocalIdent = getCssModuleLocalIdent;
 
         return config;
     }
