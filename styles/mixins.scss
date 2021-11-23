@@ -1,3 +1,16 @@
+// Mixin for common flex properties
+// @include flex; or @include flex(); will only include the display: flex property
+// You can pass keywords as arguments and they may be picked up as special properties
+//
+// Keywords:
+//   - center: Applies justify-center and align-items center
+//   - column: Applies flex-direction: column
+//   - one: Allows the flex item to grow and shrink as needed, ignoring its initial size
+//   - auto: Allows the flex item to grow and shrink, taking into account its initial size
+//   -       I believe this refers to scaling being preserved when there is free space
+//   - initial: Allows the flex item to shrink but not grow, taking into account its initial size
+//   - grow: Allows the flex item to grow but not shrink
+//   - none: Prevents the flex item from growing or shrinking
 @mixin flex($props...) {
     display: flex;
 
@@ -13,6 +26,8 @@
             flex: 1 1 auto;
         } @else if $prop == initial {
             flex: 0 1 auto;
+        } @else if $prop == grow {
+            flex: 1 0 auto;
         } @else if $prop == none {
             flex: none;
         }

@@ -1,0 +1,19 @@
+@import 'mixins.scss';
+
+.quote {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+    max-width: 500px;
+}
+
+.quote-mixins {
+    @include flex(center, column);
+}
+
+.refresh {
+    margin-top: 20px;
+    align-self: flex-end;
+}

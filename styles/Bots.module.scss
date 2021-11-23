@@ -1,0 +1,24 @@
+@import 'mixins.scss';
+
+.main-bots {
+    @include flex(column, center);
+    height: 100vh;
+    line-height: 26px;
+    overflow-x: auto;
+}
+
+.bot-list {
+    margin: auto;
+    max-height: 100%;
+    overflow: auto;
+    width: 100%;
+}
+
+.bot-wrapper {
+    padding: 64px 128px;
+    text-align: center;
+}
+
+.tit {
+    margin-bottom: 24px;
+}

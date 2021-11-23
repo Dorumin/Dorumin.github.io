@@ -5,21 +5,11 @@
 }
 
 .main {
-    @include flex(center, column);
-
-    min-height: 100vh;
-    padding: 4rem 0;
+    @include flex(column);
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    padding: 64px 128px;
     line-height: 26px;
-    font-style: italic;
-    text-align: center;
-    -webkit-backdrop-filter: blur(5px) brightness(.7);
-            backdrop-filter: blur(5px) brightness(.7);
-}
-
-#__next::before {
-    @include absolute-cover;
-
-    content: '';
-    background: url(../public/bgs/Opalset.jpg) right bottom / cover no-repeat fixed;
-    z-index: -1;
+    overflow-x: auto;
 }

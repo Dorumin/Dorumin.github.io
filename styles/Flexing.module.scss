@@ -1,0 +1,11 @@
+@import 'mixins.scss';
+
+.flexing {
+    @include flex();
+
+    width: 100%;
+}
+
+.flex-item {
+    @include flex(center, grow);
+}

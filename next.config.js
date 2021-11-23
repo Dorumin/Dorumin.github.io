@@ -7,6 +7,9 @@ function getCssModuleLocalIdent(_, __, exportName) {
 /** @type {import('next').NextConfig} */
 module.exports = {
     reactStrictMode: true,
+    images: {
+        domains: ['cdn.discordapp.com'],
+    },
     webpack(config) {
         const moduleLoader = config.module.rules
             .filter(rule => {
