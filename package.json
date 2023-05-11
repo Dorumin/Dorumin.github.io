@@ -1,34 +1,31 @@
 {
-    "name": "dorum-inext",
-    "private": true,
-    "scripts": {
-        "dev": "next dev",
-        "build": "next build && next export",
-        "start": "next start",
-        "lint": "next lint"
-    },
-    "dependencies": {
-        "@mui/icons-material": "^5.1.1",
-        "@mui/material": "^5.1.1",
-        "next": "12.0.4",
-        "react": "17.0.2",
-        "react-dom": "17.0.2"
-    },
-    "devDependencies": {
-        "@babel/core": "^7.16.0",
-        "@babel/preset-react": "^7.16.0",
-        "@babel/preset-typescript": "^7.16.0",
-        "@emotion/react": "^11.6.0",
-        "@emotion/styled": "^11.6.0",
-        "@types/node": "16.11.9",
-        "@types/react": "17.0.35",
-        "@typescript-eslint/eslint-plugin": "^5.4.0",
-        "@typescript-eslint/parser": "^5.4.0",
-        "babel-plugin-react-html-attrs": "^3.0.5",
-        "babel-plugin-wildcard": "^7.0.0",
-        "eslint": "7",
-        "eslint-config-next": "12.0.4",
-        "sass": "^1.43.4",
-        "typescript": "4.5.2"
-    }
+	"name": "dorum.in-kit",
+	"version": "0.0.1",
+	"scripts": {
+		"dev": "vite dev",
+		"build": "vite build",
+		"preview": "vite preview",
+		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
+		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
+		"test:unit": "vitest",
+		"lint": "eslint ."
+	},
+	"devDependencies": {
+		"@fontsource/fira-mono": "^4.5.10",
+		"@neoconfetti/svelte": "^1.0.0",
+		"@sveltejs/adapter-static": "^2.0.2",
+		"@sveltejs/kit": "^1.5.0",
+		"@types/cookie": "^0.5.1",
+		"@typescript-eslint/eslint-plugin": "^5.45.0",
+		"@typescript-eslint/parser": "^5.45.0",
+		"eslint": "^8.28.0",
+		"eslint-plugin-svelte": "^2.26.0",
+		"svelte": "^3.54.0",
+		"svelte-check": "^3.0.1",
+		"tslib": "^2.4.1",
+		"typescript": "^5.0.0",
+		"vite": "^4.3.0",
+		"vitest": "^0.25.3"
+	},
+	"type": "module"
 }
