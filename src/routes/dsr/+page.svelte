@@ -1,4 +1,6 @@
 <script lang="ts">
+    import { copyText } from "$lib/images/util";
+
     const inputTypes = [
         "store",
         "softserve-darkchoco",
@@ -384,12 +386,14 @@
 
     <div class="outputs">
         Malaysia:
-        <pre id="malaysia-results">{malaysiaString}</pre>
+        <!-- svelte-ignore a11y-click-events-have-key-events -->
+        <pre id="malaysia-results" on:click={() => copyText(malaysiaString)}>{malaysiaString}</pre>
 
         <hr />
 
         Genting:
-        <pre id="genting-results">{gentingString}</pre>
+        <!-- svelte-ignore a11y-click-events-have-key-events -->
+        <pre id="genting-results" on:click={() => copyText(gentingString)}>{gentingString}</pre>
     </div>
 </div>
 
