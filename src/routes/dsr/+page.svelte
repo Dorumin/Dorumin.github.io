@@ -65,12 +65,19 @@
         "Genting Premium Outlets",
     ];
     const TARGET: any = {
-        STORE: {
+        GPO: {
             SOFTSERVE: 8300,
             FOOD: 500,
             BEVERAGES: 1160,
             RETAIL: 6600,
             MONTHLY: 500000,
+        },
+        GSA: {
+            MONTHLY: 200000,
+            RETAIL: 2333.33,
+            FOOD: 333.33,
+            BEVERAGES: 680.37,
+            SOFTSERVE: 3200
         },
         KIOSK: {
             SOFTSERVE: 2935.1,
@@ -189,13 +196,23 @@
         // More decimals = Multiply by moar zeroes
         // const decitwo = n => Math.round(56567.31  / 120000 * 10000) / 100;
 
+        let targetStore;
+        if (store === 0) {
+            targetStore = TARGET.KIOSK;
+        } else if (store === 1) {
+            targetStore = TARGET.GSA;
+        } else if (store === 2) {
+            targetStore = TARGET.GPO;
+        }
+
         const {
             SOFTSERVE: SOFTSERVE_TARGET = 0,
             FOOD: FOOD_TARGET = 0,
             BEVERAGES: BEVERAGES_TARGET = 0,
             RETAIL: RETAIL_TARGET = 0,
             MONTHLY: MONTHLY_TARGET = 0,
-        } = TARGET[store ? "STORE" : "KIOSK"];
+        } = targetStore;
+
         const DAILY_TARGET = [
             SOFTSERVE_TARGET,
             FOOD_TARGET,
