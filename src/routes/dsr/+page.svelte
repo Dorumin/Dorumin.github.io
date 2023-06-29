@@ -64,7 +64,7 @@
         "Sky Avenue Store",
         "Genting Premium Outlets",
     ];
-    const TARGET: any = {
+    const TARGET = {
         GPO: {
             SOFTSERVE: 8300,
             FOOD: 500,
@@ -83,6 +83,8 @@
             SOFTSERVE: 2935.1,
             RETAIL: 1257.9,
             MONTHLY: 130000,
+            FOOD: 0,
+            BEVERAGES: 0
         },
     };
 
@@ -196,13 +198,15 @@
         // More decimals = Multiply by moar zeroes
         // const decitwo = n => Math.round(56567.31  / 120000 * 10000) / 100;
 
-        let targetStore;
+        let targetStore: (typeof TARGET)[keyof typeof TARGET];
         if (store === 0) {
             targetStore = TARGET.KIOSK;
         } else if (store === 1) {
             targetStore = TARGET.GSA;
         } else if (store === 2) {
             targetStore = TARGET.GPO;
+        } else {
+            throw new Error("cock");
         }
 
         const {
@@ -335,57 +339,59 @@
     let gentingString = "Genting results go here";
 
     $: {
-        const results = dailySalesReport({
-            store: values["store"],
-            softserve: {
-                DARKCHOCO: values["softserve-darkchoco"],
-                CARAMELMIX: values["softserve-caramelmix"],
-            },
-            food: {
-                MACARON: values["food-macaron"],
-                CAKES: values["food-cakes"],
-                PRALINE: values["food-praline"],
-            },
-            beverages: {
-                SINGLE_EXPRESSO: values["beverages-single-expresso"],
-                AFFOGATO: values["beverages-affogato"],
-                // Americano, Double Expresso
-                HOT_BLACK: values["beverages-hot-black"],
-                // Latte, Cappucino, Mocha
-                HOT_DRINK: values["beverages-hot-drink"],
-                // Caramel latte, vanilla latte
-                HOT_LATTE: values["beverages-hot-latte"],
-                HOT_CHOCOLATE: values["beverages-hot-chocolate"],
-                // Americano
-                COLD_BLACK: values["beverages-cold-black"],
-                // Latte, Cappucino, Mocha
-                COLD_BASIC: values["beverages-cold-basic"],
-                // Caramel latte, Vanilla latte
-                COLD_LATTE: values["beverages-cold-latte"],
-                COLD_CHOCOLATE: values["beverages-cold-chocolate"],
-                SHAKE: values["beverages-shake"],
-                TEA: values["beverages-tea"],
-                WATER: values["beverages-water"],
-            },
-            discount: {
-                softserve: values["discount-softserve"],
-                food: values["discount-food"],
-                beverages: values["discount-beverages"],
-                retail: values["discount-retail"],
-            },
-            crackedCones: values["cracked-cones"],
-            total: values["total"],
-            quantity: values["quantity"],
-            retailMTD: values["retail-mtd"],
-            softserveMTD: values["softserve-mtd"],
-            beveragesMTD: values["beverages-mtd"],
-            foodMTD: values["food-mtd"],
-            transaction: values["transaction"],
-            crm: values["crm"],
-        });
+        try {
+            const results = dailySalesReport({
+                store: values["store"],
+                softserve: {
+                    DARKCHOCO: values["softserve-darkchoco"],
+                    CARAMELMIX: values["softserve-caramelmix"],
+                },
+                food: {
+                    MACARON: values["food-macaron"],
+                    CAKES: values["food-cakes"],
+                    PRALINE: values["food-praline"],
+                },
+                beverages: {
+                    SINGLE_EXPRESSO: values["beverages-single-expresso"],
+                    AFFOGATO: values["beverages-affogato"],
+                    // Americano, Double Expresso
+                    HOT_BLACK: values["beverages-hot-black"],
+                    // Latte, Cappucino, Mocha
+                    HOT_DRINK: values["beverages-hot-drink"],
+                    // Caramel latte, vanilla latte
+                    HOT_LATTE: values["beverages-hot-latte"],
+                    HOT_CHOCOLATE: values["beverages-hot-chocolate"],
+                    // Americano
+                    COLD_BLACK: values["beverages-cold-black"],
+                    // Latte, Cappucino, Mocha
+                    COLD_BASIC: values["beverages-cold-basic"],
+                    // Caramel latte, Vanilla latte
+                    COLD_LATTE: values["beverages-cold-latte"],
+                    COLD_CHOCOLATE: values["beverages-cold-chocolate"],
+                    SHAKE: values["beverages-shake"],
+                    TEA: values["beverages-tea"],
+                    WATER: values["beverages-water"],
+                },
+                discount: {
+                    softserve: values["discount-softserve"],
+                    food: values["discount-food"],
+                    beverages: values["discount-beverages"],
+                    retail: values["discount-retail"],
+                },
+                crackedCones: values["cracked-cones"],
+                total: values["total"],
+                quantity: values["quantity"],
+                retailMTD: values["retail-mtd"],
+                softserveMTD: values["softserve-mtd"],
+                beveragesMTD: values["beverages-mtd"],
+                foodMTD: values["food-mtd"],
+                transaction: values["transaction"],
+                crm: values["crm"],
+            });
 
-        malaysiaString = results.malaysia;
-        gentingString = results.genting;
+            malaysiaString = results.malaysia;
+            gentingString = results.genting;
+        } catch(e) {}
     }
 </script>
 
