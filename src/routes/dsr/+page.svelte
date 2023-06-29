@@ -30,6 +30,8 @@
         "quantity",
         "retail-mtd",
         "softserve-mtd",
+        "food-mtd",
+        "beverages-mtd",
         "transaction",
         "crm",
     ];
@@ -64,16 +66,16 @@
     ];
     const TARGET: any = {
         STORE: {
-            SOFTSERVE: 3870.96,
-            FOOD: 403.23,
-            BEVERAGES: 967.74,
-            RETAIL: 2822.58,
-            MONTHLY: 250000,
+            SOFTSERVE: 8300,
+            FOOD: 500,
+            BEVERAGES: 1160,
+            RETAIL: 6600,
+            MONTHLY: 500000,
         },
         KIOSK: {
             SOFTSERVE: 2935.1,
             RETAIL: 1257.9,
-            MONTHLY: 160000,
+            MONTHLY: 130000,
         },
     };
 
@@ -227,8 +229,8 @@
         GODIVA_MALAYSIA += `Softserve MTD: *${rm(ssMTD)}*` + "\n";
 
         if (store) {
-            GODIVA_MALAYSIA += `Food MTD: *${rm(foodMTD)}*` + "\n";
-            GODIVA_MALAYSIA += `Beverages MTD: *${rm(beveragesMTD)}*` + "\n";
+            GODIVA_MALAYSIA += `Food MTD: *${rm(fMTD)}*` + "\n";
+            GODIVA_MALAYSIA += `Beverages MTD: *${rm(bMTD)}*` + "\n";
         }
 
         GODIVA_MALAYSIA += `Total MTD: *${rm(mtd)}*` + "\n";
@@ -359,6 +361,8 @@
             quantity: values["quantity"],
             retailMTD: values["retail-mtd"],
             softserveMTD: values["softserve-mtd"],
+            beveragesMTD: values["beverages-mtd"],
+            foodMTD: values["food-mtd"],
             transaction: values["transaction"],
             crm: values["crm"],
         });
