@@ -66,10 +66,10 @@
     ];
     const TARGET = {
         GPO: {
-            SOFTSERVE: 8300,
-            FOOD: 500,
-            BEVERAGES: 1160,
-            RETAIL: 6600,
+            SOFTSERVE: 8650,
+            FOOD: 519,
+            BEVERAGES: 1211,
+            RETAIL: 6920,
             MONTHLY: 500000,
         },
         GSA: {
