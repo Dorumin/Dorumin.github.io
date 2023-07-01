@@ -3,8 +3,7 @@
 
     const inputTypes = [
         "store",
-        "softserve-darkchoco",
-        "softserve-caramelmix",
+        "softserve-chocotwist",
         "food-macaron",
         "food-cakes",
         "food-praline",
@@ -64,36 +63,33 @@
         "Sky Avenue Store",
         "Genting Premium Outlets",
     ];
+
     const TARGET = {
         GPO: {
             SOFTSERVE: 8650,
             FOOD: 519,
             BEVERAGES: 1211,
             RETAIL: 6920,
-            MONTHLY: 500000,
+            MONTHLY: 550000,
         },
         GSA: {
-            MONTHLY: 200000,
-            RETAIL: 2333.33,
-            FOOD: 333.33,
-            BEVERAGES: 680.37,
-            SOFTSERVE: 3200
+            MONTHLY: 260000,
+            RETAIL: 2935.48,
+            FOOD: 419.35,
+            BEVERAGES: 1006.45,
+            SOFTSERVE: 4025.81
         },
         KIOSK: {
-            SOFTSERVE: 2935.1,
-            RETAIL: 1257.9,
-            MONTHLY: 130000,
+            SOFTSERVE: 3161.29,
+            RETAIL: 1354.84,
+            MONTHLY: 140000,
             FOOD: 0,
             BEVERAGES: 0
         },
     };
 
     const SOFTSERVE: Record<string, number> = {
-        DARKCHOCO: 28.3,
-        VANILLA: 28.3,
-        CHOCOTWIST: 28.3,
-        CARAMEL: 30.19,
-        CARAMELMIX: 30.19,
+        CHOCOTWIST: 30.19
     };
     const FOOD: Record<string, number> = {
         MACARON: 18.85,
@@ -103,7 +99,7 @@
     const BEVERAGES: Record<string, number> = {
         SINGLE_EXPRESSO: 7.55,
         AFFOGATO: 28.3,
-        // Americano, Double Expresso
+        // Americano, Double Expresso, Lambda juice
         HOT_BLACK: 11.32,
         // Latte, Cappucino, Mocha
         HOT_DRINK: 13.21,
@@ -269,35 +265,6 @@
         GODIVA_MALAYSIA += `CRM: *${crm} _(${crmP}%)_*` + "\n";
         GODIVA_MALAYSIA += "\n";
 
-        if (store) {
-            GODIVA_MALAYSIA += `Raya Hamper` + "\n";
-            GODIVA_MALAYSIA += `Daily Target:` + "\n";
-            GODIVA_MALAYSIA += `Quantity Sold:` + "\n";
-            GODIVA_MALAYSIA += "\n";
-            GODIVA_MALAYSIA += `RM 178:` + "\n";
-            GODIVA_MALAYSIA += `RM 238:` + "\n";
-            GODIVA_MALAYSIA += `RM 298:` + "\n";
-            GODIVA_MALAYSIA += `RM 398:` + "\n";
-            GODIVA_MALAYSIA += `RM 498:` + "\n";
-            GODIVA_MALAYSIA += `RM 598:` + "\n";
-            GODIVA_MALAYSIA += `RM 698:` + "\n";
-            GODIVA_MALAYSIA += `RM 798:` + "\n";
-            GODIVA_MALAYSIA += `RM 968:` + "\n";
-            GODIVA_MALAYSIA += `RM 1088:` + "\n";
-            GODIVA_MALAYSIA += `KUPAT BOX:` + "\n";
-            GODIVA_MALAYSIA += `PRALINE 8PC BOX:` + "\n";
-            GODIVA_MALAYSIA += `PRALINE 16PC BOX:` + "\n";
-            GODIVA_MALAYSIA += `RAYA CUBE 6PCS BOX:` + "\n";
-            GODIVA_MALAYSIA += `RAYA GOLD CHOC 6PC BOX:` + "\n";
-            GODIVA_MALAYSIA += "\n";
-        }
-
-        GODIVA_MALAYSIA += `White Chocolixir Promo: *-*` + "\n";
-        GODIVA_MALAYSIA += `Huawei Redemption: *-*` + "\n";
-        GODIVA_MALAYSIA += `Godiva Gift Card: *-*` + "\n";
-        GODIVA_MALAYSIA += `Gift Card MTD : *-*` + "\n";
-        GODIVA_MALAYSIA += `Gift Card Conversion : *-*` + "\n";
-
         let GODIVA_GENTING = "Godiva Sales Report" + "\n";
 
         GODIVA_GENTING += `${STORE[store]}` + "\n";
@@ -343,8 +310,7 @@
             const results = dailySalesReport({
                 store: values["store"],
                 softserve: {
-                    DARKCHOCO: values["softserve-darkchoco"],
-                    CARAMELMIX: values["softserve-caramelmix"],
+                    CHOCOTWIST: values["softserve-chocotwist"],
                 },
                 food: {
                     MACARON: values["food-macaron"],
