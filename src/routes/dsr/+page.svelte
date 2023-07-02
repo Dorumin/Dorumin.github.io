@@ -1,38 +1,38 @@
 <script lang="ts">
-    import { copyText } from "$lib/images/util";
+    import { copyText } from '$lib/images/util';
 
     const inputTypes = [
-        "store",
-        "softserve-chocotwist",
-        "food-macaron",
-        "food-cakes",
-        "food-praline",
-        "beverages-single-expresso",
-        "beverages-affogato",
-        "beverages-hot-black",
-        "beverages-hot-drink",
-        "beverages-hot-latte",
-        "beverages-hot-chocolate",
-        "beverages-cold-black",
-        "beverages-cold-basic",
-        "beverages-cold-latte",
-        "beverages-cold-chocolate",
-        "beverages-shake",
-        "beverages-tea",
-        "beverages-water",
-        "discount-softserve",
-        "discount-food",
-        "discount-beverages",
-        "discount-retail",
-        "cracked-cones",
-        "total",
-        "quantity",
-        "retail-mtd",
-        "softserve-mtd",
-        "food-mtd",
-        "beverages-mtd",
-        "transaction",
-        "crm",
+        'store',
+        'softserve-chocotwist',
+        'food-macaron',
+        'food-cakes',
+        'food-praline',
+        'beverages-single-expresso',
+        'beverages-affogato',
+        'beverages-hot-black',
+        'beverages-hot-drink',
+        'beverages-hot-latte',
+        'beverages-hot-chocolate',
+        'beverages-cold-black',
+        'beverages-cold-basic',
+        'beverages-cold-latte',
+        'beverages-cold-chocolate',
+        'beverages-shake',
+        'beverages-tea',
+        'beverages-water',
+        'discount-softserve',
+        'discount-food',
+        'discount-beverages',
+        'discount-retail',
+        'cracked-cones',
+        'total',
+        'quantity',
+        'retail-mtd',
+        'softserve-mtd',
+        'food-mtd',
+        'beverages-mtd',
+        'transaction',
+        'crm',
     ];
 
     type DSRProps = {
@@ -59,17 +59,17 @@
     };
 
     const STORE = [
-        "Sky Avenue Kiosk",
-        "Sky Avenue Store",
-        "Genting Premium Outlets",
+        'Sky Avenue Kiosk',
+        'Sky Avenue Store',
+        'Genting Premium Outlets',
     ];
 
     const TARGET = {
         GPO: {
-            SOFTSERVE: 8650,
-            FOOD: 519,
-            BEVERAGES: 1211,
-            RETAIL: 6920,
+            SOFTSERVE: 8800,
+            FOOD: 530,
+            BEVERAGES: 1230,
+            RETAIL: 7000,
             MONTHLY: 550000,
         },
         GSA: {
@@ -137,7 +137,7 @@
         const dd = d.getDate();
         const mm = d.getMonth() + 1;
         const yyyy = d.getFullYear();
-        const p = (n: number) => `${n}`.padStart(2, "0");
+        const p = (n: number) => `${n}`.padStart(2, '0');
         const date = `${p(dd)}/${p(mm)}/${p(yyyy)}`;
 
         // Discount
@@ -175,7 +175,7 @@
         const fMTD = foodMTD + cakes;
         const bMTD = beveragesMTD + drinks;
         const rMTD = retailMTD + retail;
-        const mtd = ssMTD + +fMTD + bMTD + rMTD;
+        const mtd = ssMTD + fMTD + bMTD + rMTD;
 
         // CRM percentage
         const crmP = Math.floor((crm / transaction) * 100);
@@ -188,8 +188,8 @@
 
         // Util, helps clean up the numbers
         const rm = (number: number) => `RM ${number.toLocaleString()}`;
-        // const rm = value => `RM ${value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}`;
-        const cleanup = (str: string) => str.trim().replace(/^ +/gm, "");
+        // const rm = value => `RM ${value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}`;
+        const cleanup = (str: string) => str.trim().replace(/^ +/gm, '');
 
         // More decimals = Multiply by moar zeroes
         // const decitwo = n => Math.round(56567.31  / 120000 * 10000) / 100;
@@ -202,7 +202,7 @@
         } else if (store === 2) {
             targetStore = TARGET.GPO;
         } else {
-            throw new Error("cock");
+            throw new Error('cock');
         }
 
         const {
@@ -220,75 +220,75 @@
             RETAIL_TARGET,
         ].reduce((c, v) => c + v);
 
-        let GODIVA_MALAYSIA = `*${STORE[store]} Sales Report*` + "\n";
+        let GODIVA_MALAYSIA = `*${STORE[store]} Sales Report*` + '\n';
 
-        GODIVA_MALAYSIA += `Date: ${date} 10:00 PM` + "\n";
-        GODIVA_MALAYSIA += "\n";
+        GODIVA_MALAYSIA += `Date: ${date} 10:00 PM` + '\n';
+        GODIVA_MALAYSIA += '\n';
         GODIVA_MALAYSIA +=
-            `Retail: *${rm(retail)} _(${rm(RETAIL_TARGET)})_*` + "\n";
+            `Retail: *${rm(retail)} _(${rm(RETAIL_TARGET)})_*` + '\n';
         GODIVA_MALAYSIA +=
-            `Soft serve: *${rm(ss)} _(${rm(SOFTSERVE_TARGET)})_*` + "\n";
+            `Soft serve: *${rm(ss)} _(${rm(SOFTSERVE_TARGET)})_*` + '\n';
 
         if (store) {
             GODIVA_MALAYSIA +=
-                `Food: *${rm(cakes)} _(${rm(FOOD_TARGET)})_*` + "\n";
+                `Food: *${rm(cakes)} _(${rm(FOOD_TARGET)})_*` + '\n';
             GODIVA_MALAYSIA +=
-                `Beverages: *${rm(drinks)} _(${rm(BEVERAGES_TARGET)})_*` + "\n";
+                `Beverages: *${rm(drinks)} _(${rm(BEVERAGES_TARGET)})_*` + '\n';
         }
 
-        GODIVA_MALAYSIA += "Gift Card: *NIL*" + "\n";
+        GODIVA_MALAYSIA += 'Gift Card: *NIL*' + '\n';
         GODIVA_MALAYSIA +=
-            `Total: *${rm(total)} _(${rm(DAILY_TARGET)})_*` + "\n";
-        GODIVA_MALAYSIA += `Discount: *${rm(totalDiscount)}*` + "\n";
-        GODIVA_MALAYSIA += "\n";
-        GODIVA_MALAYSIA += `Store target: *${rm(MONTHLY_TARGET)}*` + "\n";
-        GODIVA_MALAYSIA += `Retail MTD: *${rm(rMTD)}*` + "\n";
-        GODIVA_MALAYSIA += `Softserve MTD: *${rm(ssMTD)}*` + "\n";
+            `Total: *${rm(total)} _(${rm(DAILY_TARGET)})_*` + '\n';
+        GODIVA_MALAYSIA += `Discount: *${rm(totalDiscount)}*` + '\n';
+        GODIVA_MALAYSIA += '\n';
+        GODIVA_MALAYSIA += `Store target: *${rm(MONTHLY_TARGET)}*` + '\n';
+        GODIVA_MALAYSIA += `Retail MTD: *${rm(rMTD)}*` + '\n';
+        GODIVA_MALAYSIA += `Softserve MTD: *${rm(ssMTD)}*` + '\n';
 
         if (store) {
-            GODIVA_MALAYSIA += `Food MTD: *${rm(fMTD)}*` + "\n";
-            GODIVA_MALAYSIA += `Beverages MTD: *${rm(bMTD)}*` + "\n";
+            GODIVA_MALAYSIA += `Food MTD: *${rm(fMTD)}*` + '\n';
+            GODIVA_MALAYSIA += `Beverages MTD: *${rm(bMTD)}*` + '\n';
         }
 
-        GODIVA_MALAYSIA += `Total MTD: *${rm(mtd)}*` + "\n";
-        GODIVA_MALAYSIA += "\n";
+        GODIVA_MALAYSIA += `Total MTD: *${rm(mtd)}*` + '\n';
+        GODIVA_MALAYSIA += '\n';
         GODIVA_MALAYSIA += `Actual vs Target: *${
             Math.round((mtd / MONTHLY_TARGET) * 10000) / 100
         }%*`;
-        GODIVA_MALAYSIA += "\n";
-        GODIVA_MALAYSIA += `Void: *0*` + "\n";
-        GODIVA_MALAYSIA += `Reprint receipt: *-*` + "\n";
-        GODIVA_MALAYSIA += `Crack cones: *${crackedCones}*` + "\n";
-        GODIVA_MALAYSIA += `Manual Receipts: *-*` + "\n";
-        GODIVA_MALAYSIA += `Walk in: *${walkIn}*` + "\n";
-        GODIVA_MALAYSIA += `Transaction: *${transaction}*` + "\n";
-        GODIVA_MALAYSIA += `CRM: *${crm} _(${crmP}%)_*` + "\n";
-        GODIVA_MALAYSIA += "\n";
+        GODIVA_MALAYSIA += '\n';
+        GODIVA_MALAYSIA += `Void: *0*` + '\n';
+        GODIVA_MALAYSIA += `Reprint receipt: *-*` + '\n';
+        GODIVA_MALAYSIA += `Crack cones: *${crackedCones}*` + '\n';
+        GODIVA_MALAYSIA += `Manual Receipts: *-*` + '\n';
+        GODIVA_MALAYSIA += `Walk in: *${walkIn}*` + '\n';
+        GODIVA_MALAYSIA += `Transaction: *${transaction}*` + '\n';
+        GODIVA_MALAYSIA += `CRM: *${crm} _(${crmP}%)_*` + '\n';
+        GODIVA_MALAYSIA += '\n';
 
-        let GODIVA_GENTING = "Godiva Sales Report" + "\n";
+        let GODIVA_GENTING = 'Godiva Sales Report' + '\n';
 
-        GODIVA_GENTING += `${STORE[store]}` + "\n";
-        GODIVA_GENTING += `Date: ${date} 10:00 PM` + "\n";
-        GODIVA_GENTING += "\n";
-        GODIVA_GENTING += `Month Target: *${rm(MONTHLY_TARGET)}*` + "\n";
-        GODIVA_GENTING += `Day Target: *${rm(DAILY_TARGET)}*` + "\n";
-        GODIVA_GENTING += `Day Sales: *${rm(total)}*` + "\n";
-        GODIVA_GENTING += `MTD Sales: *${rm(mtd)}*` + "\n";
+        GODIVA_GENTING += `${STORE[store]}` + '\n';
+        GODIVA_GENTING += `Date: ${date} 10:00 PM` + '\n';
+        GODIVA_GENTING += '\n';
+        GODIVA_GENTING += `Month Target: *${rm(MONTHLY_TARGET)}*` + '\n';
+        GODIVA_GENTING += `Day Target: *${rm(DAILY_TARGET)}*` + '\n';
+        GODIVA_GENTING += `Day Sales: *${rm(total)}*` + '\n';
+        GODIVA_GENTING += `MTD Sales: *${rm(mtd)}*` + '\n';
         GODIVA_GENTING +=
             `Achievement: *${Math.floor((total / DAILY_TARGET) * 100)}%*` +
-            "\n";
-        GODIVA_GENTING += "\n";
-        GODIVA_GENTING += `Traffic: *${walkIn}*` + "\n";
-        GODIVA_GENTING += `Transaction: *${transaction}*` + "\n";
-        GODIVA_GENTING += `W/in Trans: *${transaction}*` + "\n";
-        GODIVA_GENTING += `Conversion: *${conversion}*` + "\n";
+            '\n';
+        GODIVA_GENTING += '\n';
+        GODIVA_GENTING += `Traffic: *${walkIn}*` + '\n';
+        GODIVA_GENTING += `Transaction: *${transaction}*` + '\n';
+        GODIVA_GENTING += `W/in Trans: *${transaction}*` + '\n';
+        GODIVA_GENTING += `Conversion: *${conversion}*` + '\n';
         GODIVA_GENTING +=
-            `ATV: *${Math.round((total / transaction) * 100) / 100}*` + "\n";
-        GODIVA_GENTING += `QTY: *${quantity}*` + "\n";
-        GODIVA_GENTING += "\n";
-        GODIVA_GENTING += "Cust Demo:" + "\n";
-        GODIVA_GENTING += "- Local Chinese, Malay, India" + "\n";
-        GODIVA_GENTING += "- Tourist Indonesian, Singaporean, Arabia" + "\n";
+            `ATV: *${Math.round((total / transaction) * 100) / 100}*` + '\n';
+        GODIVA_GENTING += `QTY: *${quantity}*` + '\n';
+        GODIVA_GENTING += '\n';
+        GODIVA_GENTING += 'Cust Demo:' + '\n';
+        GODIVA_GENTING += '- Local Chinese, Malay, India' + '\n';
+        GODIVA_GENTING += '- Tourist Indonesian, Singaporean, Arabia' + '\n';
 
         return {
             malaysia: GODIVA_MALAYSIA,
@@ -302,57 +302,57 @@
         values[inputType] = 0;
     }
 
-    let malaysiaString = "Malaysia results go here";
-    let gentingString = "Genting results go here";
+    let malaysiaString = 'Godiva Malaysia results go here';
+    let gentingString = 'Genting team results go here';
 
     $: {
         try {
             const results = dailySalesReport({
-                store: values["store"],
+                store: values['store'],
                 softserve: {
-                    CHOCOTWIST: values["softserve-chocotwist"],
+                    CHOCOTWIST: values['softserve-chocotwist'],
                 },
                 food: {
-                    MACARON: values["food-macaron"],
-                    CAKES: values["food-cakes"],
-                    PRALINE: values["food-praline"],
+                    MACARON: values['food-macaron'],
+                    CAKES: values['food-cakes'],
+                    PRALINE: values['food-praline'],
                 },
                 beverages: {
-                    SINGLE_EXPRESSO: values["beverages-single-expresso"],
-                    AFFOGATO: values["beverages-affogato"],
+                    SINGLE_EXPRESSO: values['beverages-single-expresso'],
+                    AFFOGATO: values['beverages-affogato'],
                     // Americano, Double Expresso
-                    HOT_BLACK: values["beverages-hot-black"],
+                    HOT_BLACK: values['beverages-hot-black'],
                     // Latte, Cappucino, Mocha
-                    HOT_DRINK: values["beverages-hot-drink"],
+                    HOT_DRINK: values['beverages-hot-drink'],
                     // Caramel latte, vanilla latte
-                    HOT_LATTE: values["beverages-hot-latte"],
-                    HOT_CHOCOLATE: values["beverages-hot-chocolate"],
+                    HOT_LATTE: values['beverages-hot-latte'],
+                    HOT_CHOCOLATE: values['beverages-hot-chocolate'],
                     // Americano
-                    COLD_BLACK: values["beverages-cold-black"],
+                    COLD_BLACK: values['beverages-cold-black'],
                     // Latte, Cappucino, Mocha
-                    COLD_BASIC: values["beverages-cold-basic"],
+                    COLD_BASIC: values['beverages-cold-basic'],
                     // Caramel latte, Vanilla latte
-                    COLD_LATTE: values["beverages-cold-latte"],
-                    COLD_CHOCOLATE: values["beverages-cold-chocolate"],
-                    SHAKE: values["beverages-shake"],
-                    TEA: values["beverages-tea"],
-                    WATER: values["beverages-water"],
+                    COLD_LATTE: values['beverages-cold-latte'],
+                    COLD_CHOCOLATE: values['beverages-cold-chocolate'],
+                    SHAKE: values['beverages-shake'],
+                    TEA: values['beverages-tea'],
+                    WATER: values['beverages-water'],
                 },
                 discount: {
-                    softserve: values["discount-softserve"],
-                    food: values["discount-food"],
-                    beverages: values["discount-beverages"],
-                    retail: values["discount-retail"],
+                    softserve: values['discount-softserve'],
+                    food: values['discount-food'],
+                    beverages: values['discount-beverages'],
+                    retail: values['discount-retail'],
                 },
-                crackedCones: values["cracked-cones"],
-                total: values["total"],
-                quantity: values["quantity"],
-                retailMTD: values["retail-mtd"],
-                softserveMTD: values["softserve-mtd"],
-                beveragesMTD: values["beverages-mtd"],
-                foodMTD: values["food-mtd"],
-                transaction: values["transaction"],
-                crm: values["crm"],
+                crackedCones: values['cracked-cones'],
+                total: values['total'],
+                quantity: values['quantity'],
+                retailMTD: values['retail-mtd'],
+                softserveMTD: values['softserve-mtd'],
+                beveragesMTD: values['beverages-mtd'],
+                foodMTD: values['food-mtd'],
+                transaction: values['transaction'],
+                crm: values['crm'],
             });
 
             malaysiaString = results.malaysia;
@@ -370,7 +370,7 @@
                 >
                 <input
                     id="{inputType}-input"
-                    type="number"
+                    type='number'
                     bind:value={values[inputType]}
                 />
             </div>
@@ -378,13 +378,13 @@
     </div>
 
     <div class="outputs">
-        Malaysia:
+        Godiva Malaysia:
         <!-- svelte-ignore a11y-click-events-have-key-events -->
         <pre id="malaysia-results" on:click={() => copyText(malaysiaString)}>{malaysiaString}</pre>
 
         <hr />
 
-        Genting:
+        Genting Team:
         <!-- svelte-ignore a11y-click-events-have-key-events -->
         <pre id="genting-results" on:click={() => copyText(gentingString)}>{gentingString}</pre>
     </div>
