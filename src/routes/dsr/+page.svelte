@@ -1,39 +1,39 @@
 <script lang="ts">
     import { copyText } from '$lib/images/util';
 
-    const inputTypes = [
-        'store',
-        'softserve-chocotwist',
-        'food-macaron',
-        'food-cakes',
-        'food-praline',
-        'beverages-single-expresso',
-        'beverages-affogato',
-        'beverages-hot-black',
-        'beverages-hot-drink',
-        'beverages-hot-latte',
-        'beverages-hot-chocolate',
-        'beverages-cold-black',
-        'beverages-cold-basic',
-        'beverages-cold-latte',
-        'beverages-cold-chocolate',
-        'beverages-shake',
-        'beverages-tea',
-        'beverages-water',
-        'discount-softserve',
-        'discount-food',
-        'discount-beverages',
-        'discount-retail',
-        'cracked-cones',
-        'total',
-        'quantity',
-        'retail-mtd',
-        'softserve-mtd',
-        'food-mtd',
-        'beverages-mtd',
-        'transaction',
-        'crm',
-    ];
+    const inputTypes = {
+        'store': 'store',
+        'softserve-chocotwist': 'softserve-chocotwist',
+        'food-macaron': 'food-macaron',
+        'food-cakes': 'food-cakes',
+        'food-praline': 'food-praline',
+        'beverages-single-expresso': 'beverages-single-expresso',
+        'beverages-affogato': 'beverages-affogato',
+        'beverages-hot-black': 'beverages-hot-black',
+        'beverages-hot-drink': 'beverages-hot-drink',
+        'beverages-hot-latte': 'beverages-hot-latte',
+        'beverages-hot-chocolate': 'beverages-hot-chocolate',
+        'beverages-cold-black': 'beverages-cold-black',
+        'beverages-cold-basic': 'beverages-cold-basic',
+        'beverages-cold-latte': 'beverages-cold-latte',
+        'beverages-cold-chocolate': 'beverages-cold-chocolate',
+        'beverages-shake': 'beverages-shake',
+        'beverages-tea': 'beverages-tea',
+        'beverages-water': 'beverages-water',
+        'discount-softserve': 'discount-softserve',
+        'discount-food': 'discount-food',
+        'discount-beverages': 'discount-beverages',
+        'discount-retail': 'discount-retail',
+        'cracked-cones': 'cracked-cones',
+        'total': 'total',
+        'quantity': 'quantity',
+        'retail-mtd': 'retail-mtd',
+        'softserve-mtd': 'softserve-mtd',
+        'food-mtd': 'food-mtd',
+        'beverages-mtd': 'beverages-mtd',
+        'transaction': 'transaction',
+        'crm': 'crm'
+    };
 
     type DSRProps = {
         store: number;
@@ -298,7 +298,7 @@
 
     let values: Record<string, number> = {};
 
-    for (const inputType of inputTypes) {
+    for (const inputType in inputTypes) {
         values[inputType] = 0;
     }
 
@@ -363,10 +363,10 @@
 
 <div class="dsr-calculator">
     <div class="inputs">
-        {#each inputTypes as inputType}
+        {#each Object.entries(inputTypes) as [inputType, inputName]}
             <div class="group">
                 <label for="{inputType}-input" class="label"
-                    >Input for <code>{inputType}</code>:</label
+                    >Input for <code>{inputName}</code>:</label
                 >
                 <input
                     id="{inputType}-input"
