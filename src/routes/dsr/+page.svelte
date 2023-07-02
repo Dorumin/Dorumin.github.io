@@ -2,37 +2,37 @@
     import { copyText } from '$lib/images/util';
 
     const inputTypes = {
-        'store': 'store',
-        'softserve-chocotwist': 'softserve-chocotwist',
-        'food-macaron': 'food-macaron',
-        'food-cakes': 'food-cakes',
-        'food-praline': 'food-praline',
-        'beverages-single-expresso': 'beverages-single-expresso',
-        'beverages-affogato': 'beverages-affogato',
-        'beverages-hot-black': 'beverages-hot-black',
-        'beverages-hot-drink': 'beverages-hot-drink',
-        'beverages-hot-latte': 'beverages-hot-latte',
-        'beverages-hot-chocolate': 'beverages-hot-chocolate',
-        'beverages-cold-black': 'beverages-cold-black',
-        'beverages-cold-basic': 'beverages-cold-basic',
-        'beverages-cold-latte': 'beverages-cold-latte',
-        'beverages-cold-chocolate': 'beverages-cold-chocolate',
-        'beverages-shake': 'beverages-shake',
-        'beverages-tea': 'beverages-tea',
-        'beverages-water': 'beverages-water',
-        'discount-softserve': 'discount-softserve',
-        'discount-food': 'discount-food',
-        'discount-beverages': 'discount-beverages',
-        'discount-retail': 'discount-retail',
-        'cracked-cones': 'cracked-cones',
-        'total': 'total',
-        'quantity': 'quantity',
-        'retail-mtd': 'retail-mtd',
-        'softserve-mtd': 'softserve-mtd',
-        'food-mtd': 'food-mtd',
-        'beverages-mtd': 'beverages-mtd',
-        'transaction': 'transaction',
-        'crm': 'crm'
+        'store': 'Store',
+        'softserve-chocotwist': 'Soft Serve',
+        'food-macaron': 'Macaron',
+        'food-cakes': 'Cake',
+        'food-praline': 'Praline',
+        'beverages-single-expresso': 'Single Expresso',
+        'beverages-affogato': 'Affogato',
+        'beverages-hot-black': 'Hot Black/Double Expresso/Lambda',
+        'beverages-hot-drink': 'Latte/Cappucino/Mocha',
+        'beverages-hot-latte': 'C/V Latte',
+        'beverages-hot-chocolate': 'Hot Chocolate',
+        'beverages-cold-black': 'Ice Black',
+        'beverages-cold-basic': 'Iced Latte/Cappucino/Mocha',
+        'beverages-cold-latte': 'Iced C/V Latte',
+        'beverages-cold-chocolate': 'Iced Chocolate',
+        'beverages-shake': 'Shakes',
+        'beverages-tea': 'Tea',
+        'beverages-water': 'Aqua Panna',
+        'discount-softserve': 'SS Discount',
+        'discount-food': 'Food Discount',
+        'discount-beverages': 'Drinks Discount',
+        'discount-retail': 'Retail Discount',
+        'cracked-cones': 'Cracked Cones',
+        'total': 'Total',
+        'quantity': 'Quantity',
+        'retail-mtd': 'Retail MTD',
+        'softserve-mtd': 'Soft Serve MTD',
+        'food-mtd': 'Food MTD',
+        'beverages-mtd': 'Beverages MTD',
+        'transaction': 'Transaction',
+        'crm': 'CRM'
     };
 
     type DSRProps = {
@@ -366,7 +366,7 @@
         {#each Object.entries(inputTypes) as [inputType, inputName]}
             <div class="group">
                 <label for="{inputType}-input" class="label"
-                    >Input for <code>{inputName}</code>:</label
+                    >{inputName}:</label
                 >
                 <input
                     id="{inputType}-input"
@@ -417,11 +417,12 @@
 
     .dsr-calculator .inputs .group .input {
         display: flex;
-        flex: 1 0;
+        /* flex: 1 0; */
         color: #fff;
         background: rgba(255,255,255,.1);
         border: none;
         padding: 0 6px;
         height: 24px;
+        max-width: 30%;
     }
 </style>
