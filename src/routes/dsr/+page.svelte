@@ -364,13 +364,14 @@
 <div class="dsr-calculator">
     <div class="inputs">
         {#each inputTypes as inputType}
-            <div>
-                <label for="{inputType}-input"
+            <div class="group">
+                <label for="{inputType}-input" class="label"
                     >Input for <code>{inputType}</code>:</label
                 >
                 <input
                     id="{inputType}-input"
                     type='number'
+                    class="input"
                     bind:value={values[inputType]}
                 />
             </div>
@@ -396,5 +397,34 @@
             display: flex;
             justify-content: space-between;
         }
+    }
+
+    .dsr-calculator .inputs {
+        width: 60%;
+    }
+
+    .dsr-calculator .inputs,
+    .dsr-calculator .outputs {
+        margin: 30px 40px;
+    }
+
+    .dsr-calculator .inputs .group {
+        display: flex;
+        margin-bottom: 2px;
+    }
+
+    .dsr-calculator .inputs .group .label {
+        flex: 400px 0 0;
+        text-align: right;
+        padding-right: 8px;
+    }
+
+    .dsr-calculator .inputs .group .input {
+        display: flex;
+        color: white;
+        background: rgba(255, 255, 255, .1);
+        border: none;
+        padding: 0px 6px;
+        height: 24px;
     }
 </style>
