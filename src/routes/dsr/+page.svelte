@@ -399,10 +399,6 @@
         }
     }
 
-    .dsr-calculator .inputs {
-        width: 60%;
-    }
-
     .dsr-calculator .inputs,
     .dsr-calculator .outputs {
         margin: 30px 40px;
@@ -414,17 +410,18 @@
     }
 
     .dsr-calculator .inputs .group .label {
-        flex: 400px 0 0;
+        flex: 1 0;
         text-align: right;
         padding-right: 8px;
     }
 
     .dsr-calculator .inputs .group .input {
         display: flex;
-        color: white;
-        background: rgba(255, 255, 255, .1);
+        flex: 1 0;
+        color: #fff;
+        background: rgba(255,255,255,.1);
         border: none;
-        padding: 0px 6px;
+        padding: 0 6px;
         height: 24px;
     }
 </style>
