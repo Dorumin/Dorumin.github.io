@@ -9,7 +9,7 @@
         'food-praline': 'Praline',
         'beverages-single-expresso': 'Single Expresso',
         'beverages-affogato': 'Affogato',
-        'beverages-hot-black': 'Hot Black/Double Expresso/Lambda',
+        'beverages-hot-black': 'Hot Black/DExpresso/Juice',
         'beverages-hot-drink': 'Latte/Cappucino/Mocha',
         'beverages-hot-latte': 'C/V Latte',
         'beverages-hot-chocolate': 'Hot Chocolate',
