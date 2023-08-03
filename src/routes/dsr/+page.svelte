@@ -66,23 +66,23 @@
 
     const TARGET = {
         GPO: {
-            SOFTSERVE: 8800,
-            FOOD: 530,
-            BEVERAGES: 1230,
+            SOFTSERVE: 9500,
+            FOOD: 500,
+            BEVERAGES: 1200,
             RETAIL: 7000,
             MONTHLY: 550000,
         },
         GSA: {
-            MONTHLY: 260000,
-            RETAIL: 2935.48,
-            FOOD: 419.35,
-            BEVERAGES: 1006.45,
-            SOFTSERVE: 4025.81
+            MONTHLY: 280000,
+            RETAIL: 3161.29,
+            FOOD: 451.61,
+            BEVERAGES: 1083.87,
+            SOFTSERVE: 4335.48
         },
         KIOSK: {
-            SOFTSERVE: 3161.29,
-            RETAIL: 1354.84,
-            MONTHLY: 140000,
+            SOFTSERVE: 2935.1,
+            RETAIL: 1257.9,
+            MONTHLY: 130000,
             FOOD: 0,
             BEVERAGES: 0
         },
