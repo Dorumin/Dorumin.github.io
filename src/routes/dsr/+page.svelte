@@ -70,7 +70,7 @@
             FOOD: 500,
             BEVERAGES: 1200,
             RETAIL: 7000,
-            MONTHLY: 550000,
+            MONTHLY: 600000,
         },
         GSA: {
             MONTHLY: 280000,
