@@ -79,7 +79,7 @@
     });
 </script>
 
-<svelte:window on:beforeunload={onLoaded} />
+<svelte:window on:beforeunload|trusted={onLoaded} />
 
 <div class="forever-loader">
     <div class="loading-spinner">
