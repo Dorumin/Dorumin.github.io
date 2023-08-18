@@ -70,22 +70,21 @@
         assert(animationState !== null);
 
         animationHandle = window.setTimeout(updateProgress, animationState.nextStepDuration);
-
-        window.addEventListener('beforeunload', onLoaded);
     });
 
     onDestroy(() => {
         if (typeof window !== 'undefined') {
             window.clearTimeout(animationHandle);
-            window.removeEventListener('beforeunload', onLoaded);
         }
     });
 </script>
 
+<svelte:window on:beforeunload={onLoaded} />
+
 <div class="forever-loader">
     <div class="loading-spinner">
         <svg viewBox="25 25 50 50">
-            <circle cx="50" cy="50" r="20"></circle>
+            <circle cx="50" cy="50" r="20" />
         </svg>
     </div>
 
