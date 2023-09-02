@@ -3,6 +3,7 @@
 
     const inputTypes = {
         'store': 'Store',
+        'time': 'Time',
         'softserve-chocotwist': 'Soft Serve',
         'food-macaron': 'Macaron',
         'food-cakes': 'Cake',
@@ -41,6 +42,7 @@
 
     type DSRProps = {
         store: number;
+        time: number;
         softserve: Record<string, number>;
         food: Record<string, number>;
         beverages: Record<string, number>;
@@ -127,6 +129,7 @@
     };
     const dailySalesReport = ({
         store = 0,
+        time = 0,
         softserve,
         food,
         beverages,
@@ -240,7 +243,7 @@
 
         let GODIVA_MALAYSIA = `*${STORE[store]} Sales Report*` + '\n';
 
-        GODIVA_MALAYSIA += `Date: ${date} 10:00 PM` + '\n';
+        GODIVA_MALAYSIA += `Date: ${date} ${time || 10}:00 PM` + '\n';
         GODIVA_MALAYSIA += '\n';
         GODIVA_MALAYSIA +=
             `Retail: *${rm(retail)} _(${rm(RETAIL_TARGET)})_*` + '\n';
@@ -286,7 +289,7 @@
         let GODIVA_GENTING = 'Godiva Sales Report' + '\n';
 
         GODIVA_GENTING += `${STORE[store]}` + '\n';
-        GODIVA_GENTING += `Date: ${date} 10:00 PM` + '\n';
+        GODIVA_GENTING += `Date: ${date} ${time || 10}:00 PM` + '\n';
         GODIVA_GENTING += '\n';
         GODIVA_GENTING += `Month Target: *${rm(MONTHLY_TARGET)}*` + '\n';
         GODIVA_GENTING += `Day Target: *${rm(DAILY_TARGET)}*` + '\n';
@@ -327,6 +330,7 @@
         try {
             const results = dailySalesReport({
                 store: values['store'],
+                time: values['time'],
                 softserve: {
                     CHOCOTWIST: values['softserve-chocotwist'],
                 },
