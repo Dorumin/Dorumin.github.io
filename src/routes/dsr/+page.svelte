@@ -31,6 +31,10 @@
         'softserve-mtd': 'Soft Serve MTD',
         'food-mtd': 'Food MTD',
         'beverages-mtd': 'Beverages MTD',
+        'retail-target': 'Retail Target',
+        'softserve-target': 'Soft Serve Target',
+        'food-target': 'Food Target',
+        'beverages-target': 'Beverages Target',
         'transaction': 'Transaction',
         'crm': 'CRM'
     };
@@ -44,18 +48,22 @@
         crackedCones: number;
         total: number;
         quantity: number;
+        retailMTD?: number;
         softserveMTD: number;
         foodMTD?: number;
         beveragesMTD?: number;
-        retailMTD?: number;
+        retailTarget?: number;
+        softserveTarget: number;
+        foodTarget?: number;
+        beveragesTarget?: number;
         transaction: number;
         crm: number;
     };
     type Discount = {
+        retail: number;
         softserve: number;
         food: number;
         beverages: number;
-        retail: number;
     };
 
     const STORE = [
@@ -66,28 +74,28 @@
 
     const TARGET = {
         GPO: {
-            SOFTSERVE: 9500,
-            FOOD: 500,
-            BEVERAGES: 1200,
-            RETAIL: 7000,
-            MONTHLY: 600000,
+            MONTHLY: 500000,
+            RETAIL: 6800,
+            SOFTSERVE: 8500,
+            FOOD: 510,
+            BEVERAGES: 1190,
         },
         GSA: {
-            MONTHLY: 280000,
-            RETAIL: 3161.29,
-            FOOD: 451.61,
-            BEVERAGES: 1083.87,
-            SOFTSERVE: 4335.48
+            MONTHLY: 250000,
+            RETAIL: 2916.67,
+            SOFTSERVE: 4000,
+            FOOD: 416.67,
+            BEVERAGES: 1000,
         },
         KIOSK: {
-            SOFTSERVE: 2935.1,
-            RETAIL: 1257.9,
-            MONTHLY: 130000,
+            MONTHLY: 120000,
+            RETAIL: 1200,
+            SOFTSERVE: 2800,
             FOOD: 0,
             BEVERAGES: 0
         },
     };
-
+    
     const SOFTSERVE: Record<string, number> = {
         CHOCOTWIST: 30.19
     };
@@ -126,10 +134,14 @@
         crackedCones,
         total,
         quantity,
+        retailMTD = 0,
         softserveMTD = 0,
         foodMTD = 0,
         beveragesMTD = 0,
-        retailMTD = 0,
+        retailTarget = 0,
+        softserveTarget = 0,
+        foodTarget = 0,
+        beveragesTarget = 0,
         transaction,
         crm,
     }: DSRProps) => {
@@ -142,10 +154,10 @@
 
         // Discount
         const {
+            retail: rd = 0,
             softserve: ssd = 0,
             food: fd = 0,
             beverages: bd = 0,
-            retail: rd = 0,
         } = discount;
         const totalDiscount = [ssd, fd, bd, rd].reduce((c, v) => c + v);
 
@@ -171,17 +183,17 @@
         const retail = total - ss - cakes - drinks;
 
         // Month to dates
+        const rMTD = retailMTD + retail;
         const ssMTD = softserveMTD + ss;
         const fMTD = foodMTD + cakes;
         const bMTD = beveragesMTD + drinks;
-        const rMTD = retailMTD + retail;
-        const mtd = ssMTD + fMTD + bMTD + rMTD;
+        const mtd = rMTD + ssMTD + fMTD + bMTD;
 
         // CRM percentage
         const crmP = Math.floor((crm / transaction) * 100);
 
         // Randomizer for walk in, it needs to be 80% and above transaction
-        const [min, max] = [1.15, 1.25];
+        const [ min, max ] = [1.15, 1.25];
         const ratio = Math.random() * (max - min) + min;
         const walkIn = Math.floor(transaction * ratio);
         const conversion = Math.floor((transaction / walkIn) * 100);
@@ -206,12 +218,18 @@
         }
 
         const {
-            SOFTSERVE: SOFTSERVE_TARGET = 0,
-            FOOD: FOOD_TARGET = 0,
-            BEVERAGES: BEVERAGES_TARGET = 0,
-            RETAIL: RETAIL_TARGET = 0,
+            RETAIL: PLACEHOLDER_RETAIL_TARGET = 0,
+            SOFTSERVE: PLACEHOLDER_SOFTSERVE_TARGET = 0,
+            FOOD: PLACEHOLDER_FOOD_TARGET = 0,
+            BEVERAGES: PLACEHOLDER_BEVERAGES_TARGET = 0,
             MONTHLY: MONTHLY_TARGET = 0,
         } = targetStore;
+        
+        // Targets
+        const RETAIL_TARGET = retailTarget || PLACEHOLDER_RETAIL_TARGET;
+        const SOFTSERVE_TARGET = softserveTarget || PLACEHOLDER_SOFTSERVE_TARGET;
+        const FOOD_TARGET = foodTarget || PLACEHOLDER_FOOD_TARGET;
+        const BEVERAGES_TARGET = beveragesTarget || PLACEHOLDER_BEVERAGES_TARGET;
 
         const DAILY_TARGET = [
             SOFTSERVE_TARGET,
@@ -351,6 +369,10 @@
                 softserveMTD: values['softserve-mtd'],
                 beveragesMTD: values['beverages-mtd'],
                 foodMTD: values['food-mtd'],
+                retailTarget: values['retail-target'],
+                softserveTarget: values['softserve-target'],
+                beveragesTarget: values['beverages-target'],
+                foodTarget: values['food-target'],
                 transaction: values['transaction'],
                 crm: values['crm'],
             });
