@@ -302,9 +302,9 @@
         GODIVA_GENTING += `Traffic: *${walkIn}*` + '\n';
         GODIVA_GENTING += `Transaction: *${transaction}*` + '\n';
         GODIVA_GENTING += `W/in Trans: *${transaction}*` + '\n';
-        GODIVA_GENTING += `Conversion: *${conversion}*` + '\n';
+        GODIVA_GENTING += `Conversion: *${conversion}%*` + '\n';
         GODIVA_GENTING +=
-            `ATV: *${Math.round((total / transaction) * 100) / 100}*` + '\n';
+            `ATV: *${rm(Math.round((total / transaction) * 100) / 100)}*` + '\n';
         GODIVA_GENTING += `QTY: *${quantity}*` + '\n';
         GODIVA_GENTING += '\n';
         GODIVA_GENTING += 'Cust Demo:' + '\n';
