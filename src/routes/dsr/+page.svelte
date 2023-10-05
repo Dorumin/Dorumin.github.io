@@ -76,7 +76,7 @@
 
     const TARGET = {
         GPO: {
-            MONTHLY: 500000,
+            MONTHLY: 550000,
             RETAIL: 6800,
             SOFTSERVE: 8500,
             FOOD: 510,
@@ -97,7 +97,7 @@
             BEVERAGES: 0
         },
     };
-    
+
     const SOFTSERVE: Record<string, number> = {
         CHOCOTWIST: 30.19
     };
@@ -227,7 +227,7 @@
             BEVERAGES: PLACEHOLDER_BEVERAGES_TARGET = 0,
             MONTHLY: MONTHLY_TARGET = 0,
         } = targetStore;
-        
+
         // Targets
         const RETAIL_TARGET = retailTarget || PLACEHOLDER_RETAIL_TARGET;
         const SOFTSERVE_TARGET = softserveTarget || PLACEHOLDER_SOFTSERVE_TARGET;
