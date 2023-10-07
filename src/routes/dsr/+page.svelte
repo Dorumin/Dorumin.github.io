@@ -37,7 +37,9 @@
         'food-target': 'Food Target',
         'beverages-target': 'Beverages Target',
         'transaction': 'Transaction',
-        'crm': 'CRM'
+        'crm': 'CRM',
+        'monthly-target': 'Monthly Target (Override)',
+        'daily-target': 'Daily Target (Override)',
     };
 
     type DSRProps = {
@@ -60,7 +62,10 @@
         beveragesTarget?: number;
         transaction: number;
         crm: number;
+        monthTarget: number;
+        dailyTarget: number;
     };
+
     type Discount = {
         retail: number;
         softserve: number;
@@ -147,6 +152,8 @@
         beveragesTarget = 0,
         transaction,
         crm,
+        monthTarget,
+        dailyTarget
     }: DSRProps) => {
         const d = new Date();
         const dd = d.getDate();
@@ -225,16 +232,17 @@
             SOFTSERVE: PLACEHOLDER_SOFTSERVE_TARGET = 0,
             FOOD: PLACEHOLDER_FOOD_TARGET = 0,
             BEVERAGES: PLACEHOLDER_BEVERAGES_TARGET = 0,
-            MONTHLY: MONTHLY_TARGET = 0,
+            MONTHLY: PLACEHOLDER_MONTHLY_TARGET = 0
         } = targetStore;
 
         // Targets
-        const RETAIL_TARGET = retailTarget || PLACEHOLDER_RETAIL_TARGET;
+        const RETAIL_TARGET = retailTarget ?? PLACEHOLDER_RETAIL_TARGET;
         const SOFTSERVE_TARGET = softserveTarget || PLACEHOLDER_SOFTSERVE_TARGET;
         const FOOD_TARGET = foodTarget || PLACEHOLDER_FOOD_TARGET;
         const BEVERAGES_TARGET = beveragesTarget || PLACEHOLDER_BEVERAGES_TARGET;
+        const MONTHLY_TARGET = monthTarget || PLACEHOLDER_MONTHLY_TARGET;
 
-        const DAILY_TARGET = [
+        const DAILY_TARGET = dailyTarget || [
             SOFTSERVE_TARGET,
             FOOD_TARGET,
             BEVERAGES_TARGET,
@@ -379,6 +387,8 @@
                 foodTarget: values['food-target'],
                 transaction: values['transaction'],
                 crm: values['crm'],
+                monthTarget: values['monthly-target'],
+                dailyTarget: values['daily-target']
             });
 
             malaysiaString = results.malaysia;
