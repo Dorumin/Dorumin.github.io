@@ -1,6 +1,11 @@
-<script>
+<script context="module">
+    import { writable } from "svelte/store";
+
+    const moving = writable(0);
+</script>
+
+<script lang="ts">
     import { onNavigate } from "$app/navigation";
-    import { moving } from "./moving";
 
     onNavigate(() => {
         console.log('set to 1');
@@ -13,7 +18,6 @@
             }, 500);
         });
     });
-
 </script>
 
 <div class="transitions-page">

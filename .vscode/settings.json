@@ -3,5 +3,6 @@
         "**/node_modules": false,
         "**/node_modulesx": true
     },
-    "search.useIgnoreFiles": false
+    "search.useIgnoreFiles": true,
+    "search.useGlobalIgnoreFiles": false
 }
