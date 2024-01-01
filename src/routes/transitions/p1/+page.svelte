@@ -1,5 +1,1 @@
-<script>
-    import { moving } from "../moving";
-</script>
-
-<span>page 1 {$moving}</span>
+<span>page 1</span>
